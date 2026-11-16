@@ -75,12 +75,12 @@ small{color:#8A867E;font-size:12px;text-align:center;display:block}
   <section class="premium" aria-labelledby="prem-t">
     <span class="sello">Acceso premium</span>
     <h2 id="prem-t">¿Aún no tienes tu contraseña?</h2>
-    <p>Desbloquea tu propuesta con un pago único y recibe tu contraseña personal por WhatsApp.</p>
+    <p>Desbloquea tu propuesta con un pago único y entra al instante.</p>
     <ul class="incluye"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>13 propuestas de diseño</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Renders fotorrealistas en varios acabados</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Asesoría directa por WhatsApp</li></ul>
     <div class="precio"><b>$700</b><span>MXN · pago único</span></div>
-    <ol class="pasos"><li><b>1</b>Paga con Mercado Pago (tarjeta, OXXO o transferencia)</li><li><b>2</b>Envíanos tu comprobante por WhatsApp</li><li><b>3</b>Te mandamos tu contraseña y entras de inmediato</li></ol>
-    <a class="b pagar" href="https://mpago.la/29FwHMP" target="_blank" rel="noopener">Desbloquear con Mercado Pago</a>
-    <a class="b ya" href="https://wa.me/526692394475?text=Hola%2C%20soy%20Marina%20Cergara.%20Ya%20realic%C3%A9%20el%20pago%20de%20%24700%20para%20desbloquear%20la%20propuesta%20Casa%20Marina.%20Te%20env%C3%ADo%20mi%20comprobante." target="_blank" rel="noopener">Ya pagué · enviar comprobante</a>
+    <ol class="pasos"><li><b>1</b>Paga con Mercado Pago (tarjeta, OXXO o transferencia)</li><li><b>2</b>Al aprobarse el pago regresas aquí solo</li><li><b>3</b>Tu propuesta se abre de inmediato, sin esperar</li></ol>
+    <a class="b pagar" href="https://swcjjusttfelluptyond.supabase.co/functions/v1/pago-propuesta?p=marina-seminario&amp;t=acceso">Desbloquear con Mercado Pago</a>
+    <a class="b ya" href="https://wa.me/526692394475?text=Hola%2C%20soy%20Marina%20Cergara.%20Ya%20realic%C3%A9%20el%20pago%20de%20%24700%20para%20desbloquear%20la%20propuesta%20Casa%20Marina.%20Te%20env%C3%ADo%20mi%20comprobante." target="_blank" rel="noopener">¿Dudas? Escríbenos por WhatsApp</a>
     <small>Pago seguro procesado por Mercado Pago</small>
   </section>
 </main>
@@ -129,6 +129,8 @@ small{color:#8A867E;font-size:12px;text-align:center;display:block}
   }
   // Link personal: #a-codigo entra directo y se borra de la barra de direcciones,
   // así lo que el cliente copie o comparta desde el navegador ya pide contraseña.
+  var mp = /^#p-([A-Za-z0-9]+)$/.exec(location.hash || '');
+  if (mp) { try { localStorage.setItem(CL, mp[1]); } catch(e){} try { history.replaceState(null, '', location.pathname + location.search); } catch(e){} }
   var ma = /^#a-([A-Za-z0-9]+)$/.exec(location.hash || '');
   if (ma) { try { history.replaceState(null, '', location.pathname + location.search); } catch(e){} }
   var f = document.querySelector('form'), inp = document.getElementById('clave'), err = document.querySelector('.error'), btn = f.querySelector('button');

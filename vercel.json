@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/:carpeta([a-z0-9]+(?:-[a-z0-9]+)*)", "destination": "/:carpeta/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/:carpeta([a-z0-9]+(?:-[a-z0-9]+)*)/", "destination": "/api/propuesta?c=:carpeta&f=index.html" },
+    { "source": "/:carpeta([a-z0-9]+(?:-[a-z0-9]+)*)/index.html", "destination": "/api/propuesta?c=:carpeta&f=index.html" },
+    { "source": "/:carpeta([a-z0-9]+(?:-[a-z0-9]+)*)/versiones/:v([a-z0-9-]+).html", "destination": "/api/propuesta?c=:carpeta&f=versiones/:v.html" }
+  ]
+}
